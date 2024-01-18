@@ -6,7 +6,7 @@ import { db, storage } from '../firebase';
 import * as DocumentPicker from 'expo-document-picker';
 import { ref, put, getDownloadURL } from 'firebase/storage';
 import { Entypo, MaterialIcons, Feather, AntDesign } from '@expo/vector-icons';
-import { v4 as uuidv4 } from "uuid";
+import { Linking } from 'react-native';
 
 const ReportCard = () => {
   const navigation = useNavigation();
@@ -29,6 +29,15 @@ const ReportCard = () => {
 
     fetchDocuments();
   }, []);
+
+  const handleDownload = async (document) => {
+    try {
+      const downloadURL = document.doc;
+      await Linking.openURL(downloadURL);
+    } catch (error) {
+      console.error('Error opening URL:', error);
+    }
+  };
 
   /*const pickAndUploadDocument = async () => {
     try {
