@@ -1,6 +1,4 @@
 # StudentReport-app
-This is a React native application to help you with workouts.
-
 <p>
 <table>
   <tr>
